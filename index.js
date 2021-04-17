@@ -26,6 +26,6 @@ app.route('/').get((req,res)=> res.json("hello"))
 
 
 
-app.listen(port, () =>
+app.listen(port, "0.0.0.0", () =>
   console.log(`welcome your listinnig at port ${port}`)
 );

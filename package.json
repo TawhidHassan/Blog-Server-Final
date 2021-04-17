@@ -1,7 +1,6 @@
 {
   "name": "blog-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,5 +14,18 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.4",
     "nodemon": "^2.0.7"
-  }
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TawhidHassan/Blog-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TawhidHassan/Blog-server/issues"
+  },
+  "homepage": "https://github.com/TawhidHassan/Blog-server#readme",
+  "description": ""
 }
