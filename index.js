@@ -6,7 +6,7 @@ const app = express();
 
 
 
-mongoose.connect('mongodb://localhost:27017/BlogServer', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://BlogUser:Sifat15963740@cluster0.0igq6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const connection = mongoose.connection;
