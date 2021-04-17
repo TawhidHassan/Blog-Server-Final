@@ -26,4 +26,37 @@ router.route("/register").post((req, res) => {
 });
 
 
+router.route("/update/:username").patch((req, res) => {
+    console.log(req.params.username);
+    User.findOneAndUpdate(
+      { username: req.params.username },
+      { $set: { password: req.body.password } },
+      (err, result) => {
+        if (err) return res.status(500).json({ msg: err });
+        const msg = {
+          msg: "password successfully updated",
+          username: req.params.username,
+        };
+        return res.json(msg);
+      }
+    );
+  });
+  
+  router.route("/delete/:username").delete((req, res) => {
+    User.findOneAndDelete({ username: req.params.username }, (err, result) => {
+      if (err) return res.status(500).json({ msg: err });
+      const msg = {
+        msg: "User deleted",
+        username: req.params.username,
+      };
+      return res.json(msg);
+    });
+  });
+
+
+
+
+
+
+
 module.exports = router;
