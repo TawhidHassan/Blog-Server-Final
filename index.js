@@ -15,6 +15,12 @@ connection.once("open", () => {
 });
 
 
+app.use(express.json());
+
+
+const userRoute = require("./routes/user");
+app.use("/user", userRoute);
+
 
 app.route('/').get((req,res)=> res.json("hello"))
 
