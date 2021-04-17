@@ -1,10 +1,48 @@
 const express = require("express");
 const User = require("../models/users.model");
 
-
-
 const router = express.Router();
 
+router.route("/:username").get((req, res) => {
+    User.findOne({ username: req.params.username }, (err, result) => {
+      if (err) return res.status(500).json({ msg: err });
+      return res.json({
+        data: result,
+        username: req.params.username,
+      });
+    });
+  });
+
+  router.route("/checkusername/:username").get((req, res) => {
+    User.findOne({ username: req.params.username }, (err, result) => {
+      if (err) return res.status(500).json({ msg: err });
+      if (result !== null) {
+        return res.json({
+          Status: true,
+        });
+      } else
+        return res.json({
+          Status: false,
+        });
+    });
+  });
+
+router.route("/login").post((req, res) => {
+    User.findOne({ username: req.body.username }, (err, result) => {
+      if (err) return res.status(500).json({ msg: err });
+      if (result === null) {
+        return res.status(403).json("Username incorrect");
+      }
+      if (result.password === req.body.password) {
+        // here we implement the JWT token functionality
+        res.json({
+          msg: "success",
+        });
+      } else {
+        res.status(403).json("password is incorrect");
+      }
+    });
+  });
 
 router.route("/register").post((req, res) => {
   console.log("inside the register");
