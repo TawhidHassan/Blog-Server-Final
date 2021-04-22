@@ -31,7 +31,7 @@ const upload = multer({
 
 //adding and update profile image
 router.route("/add/image")
-.put(middleware.checkToken, upload.single("img"), (req, res) => {
+.patch(middleware.checkToken, upload.single("img"), (req, res) => {
     Profile.findOneAndUpdate(
       { username: req.decoded.username },
       {
