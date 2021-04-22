@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
     limits: {
       fileSize: 1024 * 1024 * 6,
     },
-    fileFilter: fileFilter,
+    // fileFilter: fileFilter,
   });
 
 //upload user profile image
