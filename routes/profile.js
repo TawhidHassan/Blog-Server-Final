@@ -29,6 +29,7 @@ const upload = multer({
   // fileFilter: fileFilter,
 });
 
+
 //adding and update profile image
 router
   .route("/add/image")
