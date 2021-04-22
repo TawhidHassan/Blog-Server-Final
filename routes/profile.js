@@ -27,4 +27,18 @@ router.route("/add").post(middleware.checkToken, (req, res) => {
   });
 
 
+// Check Profile data
+
+router.route("/checkProfile").get(middleware.checkToken, (req, res) => {
+    Profile.findOne({ username: req.decoded.username }, (err, result) => {
+      if (err) return res.json({ err: err });
+      else if (result == null) {
+        return res.json({ status: false, username: req.decoded.username });
+      } else {
+        return res.json({ status: true, username: req.decoded.username });
+      }
+    });
+  });
+
+
   module.exports = router;
