@@ -35,23 +35,7 @@ const storage = multer.diskStorage({
 router
   .route("/add/image")
   .patch(middleware.checkToken, upload.single("img"), (req, res) => {
-    Profile.findOneAndUpdate(
-      { username: req.decoded.username },
-      {
-        $set: {
-          img: req.file.path,
-        },
-      },
-      { new: true },
-      (err, profile) => {
-        if (err) return res.status(500).send(err);
-        const response = {
-          message: "image added successfully updated",
-          data: profile,
-        };
-        return res.status(200).send(response);
-      }
-    );
+    res.send("value");
   });
 
 
