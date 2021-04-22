@@ -83,7 +83,13 @@ router.route("/checkProfile").get(middleware.checkToken, (req, res) => {
   });
 });
 
-
+router.route("/getData").get(middleware.checkToken, (req, res) => {
+    Profile.findOne({ username: req.decoded.username }, (err, result) => {
+      if (err) return res.json({ err: err });
+      if (result == null) return res.json({ data: [] });
+      else return res.json({ data: result });
+    });
+  })
 
 
 
