@@ -19,7 +19,7 @@ app.use(express.json());
 
 
 //middleware
-app.use("/uploads", express.static("uploads"));
+app.use(express.static(__dirname));
 app.use(express.json());
 const userRoute = require("./routes/user");
 app.use("/user", userRoute);
