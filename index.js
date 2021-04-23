@@ -41,5 +41,7 @@ app.route('/').get((req,res)=> res.json("hello"))
 
 
 app.listen(port, "0.0.0.0", () =>
-  console.log(`welcome your listinnig at port ${port}`)
+  console.log(`welcome yours listinnig at port ${port}`)
 );
+
+
