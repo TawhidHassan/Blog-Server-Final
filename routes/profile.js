@@ -4,9 +4,12 @@ const Profile = require("../models/profile.model");
 const middleware = require("../middleware");
 const multer = require("multer");
 const path = require('path');
+const fs = require('fs');
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, './uploads'));
+    fs.mkdir('./uploads/',(err)=>{
+      cb(null, './uploads/');
+   });
   },
   filename: (req, file, cb) => {
     cb(null, req.decoded.username + ".jpg");
