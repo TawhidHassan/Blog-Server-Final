@@ -4,15 +4,17 @@ const BlogPost = require("../models/blogpost.model");
 const middleware = require("../middleware");
 const multer = require("multer");
 
+const fs = require('fs');
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads");
+    fs.mkdir('./uploads/',(err)=>{
+      cb(null, './uploads/');
+   });
   },
   filename: (req, file, cb) => {
-    cb(null, req.params.id + ".jpg");
+    cb(null, req.decoded.username + ".jpg");
   },
 });
-
 const upload = multer({
   storage: storage,
   limits: {
