@@ -4,8 +4,8 @@ const Profile = require("../models/profile.model");
 const middleware = require("../middleware");
 const multer = require("multer");
 const path = require("path");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+const storage = multer({
+  dest: (req, file, cb) => {
     cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
@@ -32,7 +32,7 @@ const upload = multer({
 //adding and update profile image
 router
   .route("/add/image")
-  .patch(middleware.checkToken, upload.single("img"), (req, res) => {
+  .patch(middleware.checkToken, upload.single('img'), (req, res) => {
     Profile.findOneAndUpdate(
       { username: req.decoded.username },
       {
