@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
    });
   },
   filename: (req, file, cb) => {
-    cb(null, req.decoded.username + ".jpg");
+    cb(null, req.params.id + ".jpg");
   },
 });
 const upload = multer({
